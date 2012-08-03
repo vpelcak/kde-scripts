@@ -4,7 +4,7 @@ check_config() {
 	# path to translations
 	if [[ ! -d ${KDEREPO_PATH} ]]; then
 		echo "KDEREPO_PATH variable in your configuration file does not point to a directory."
-		echo "If needed create the dir using \"mkdir \"${KDEREPO_PATH}\""
+		echo "If needed create the dir by: mkdir \"${KDEREPO_PATH}\""
 		exit 1
 	fi
 
