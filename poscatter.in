@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. _PREFIX_/share/kdel10n-scripts/common.sh
+. _PREFIX_/share/kde-l10n-scripts/common.sh
 
 pushd "${KDE_REPO}"/trunk/l10n-support > /dev/null || exit 1
 

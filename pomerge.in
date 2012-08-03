@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. _PREFIX_/share/kdel10n-scripts/common.sh
+. _PREFIX_/share/kde-l10n-scripts/common.sh
 
 echo "Updating all repositories"
 svn up "${KDE_REPO}"/{trunk,branches/stable}/l10n-kde4/{scripts,templates,cs} "${KDEREPO}"/trunk/l10n-support/{pology,scripts,templates,cs} || exit 1
