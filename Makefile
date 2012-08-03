@@ -1,15 +1,17 @@
 SCRIPTS = \
-	lookup \
-	lookup2 \
-	obsol \
-	pology \
-	pomerge \
-	poscatter
+	lookup.in \
+	lookup2.in \
+	obsol.in \
+	pology.in \
+	pomerge.in \
+	poscatter.in
 
 prefix ?= /usr/local
 
-setpath:
-	sed -i -e "s:_PREFIX_:$(prefix):" $(SCRIPTS)
+setpath: $(SCRIPTS)
+	for script in $(SCRIPTS); do \
+		sed -e "s:_PREFIX_:$(prefix):" $$script > $${script/.in} ; \
+	done
 
 install: setpath
 	test -d $(DESTDIR) || mkdir -p $(DESTDIR) ; \
@@ -20,4 +22,9 @@ install: setpath
 	done ; \
 	install -m 0644 common.sh $(DESTDIR)/$(prefix)/share/kde-l10n-scripts/
 
-.PHONY: install setpath
+clean:
+	for script in $(SCRIPTS); do \
+		rm -rf $${script/.in} ; \
+	done
+
+.PHONY: install setpath clean
