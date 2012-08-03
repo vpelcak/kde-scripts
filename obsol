@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. /usr/share/kdel10n-scripts/common.sh
+. _PREFIX_/share/kdel10n-scripts/common.sh
 
 pushd "${KDEREPO_PATH}/trunk" > /dev/null || exit 1
 
