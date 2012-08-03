@@ -1,0 +1,21 @@
+#!/bin/sh
+
+KDEREPO=/home/vpelcak/\!files/preklad/kde
+
+svn up $KDEREPO/{trunk,branches/stable}/l10n-kde4/{scripts,templates,cs} $KDEREPO/trunk/l10n-support/{pology,scripts,templates,cs}
+
+#cd $KDEREPO
+
+#svn info
+
+#svn switch --relocate https://svn.kde.org/home/kde svn+ssh://pelcak@svn.kde.org/home/kde/
+
+cd /home/vpelcak/\!files/preklad/kde/trunk/l10n-support
+
+posummit scripts/messages.summit cs merge
+
+posummit scripts/docmessages.summit cs merge
+
+#posieve set-header -sfield:'Plural-Forms:nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;' -screate -safter:'Content-Transfer-Encoding' /home/vpelcak/\!files/preklad/kde/trunk/l10n-support/cs/messages/
+
+svn ci -m "Update of Summit"

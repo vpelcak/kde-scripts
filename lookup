@@ -1,0 +1,8 @@
+#!/bin/bash
+
+KDESVN=/home/vpelcak/\!files/preklad/kde/trunk
+KDESVNLANG=cs
+cd $KDESVN
+svn up
+cd $KDESVN/l10n-support/cs/summit
+$KDESVN/l10n-support/pology/scripts/posieve.py find-messages -s "msgstr:${1}" -s lokalize messages > /dev/null

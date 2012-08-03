@@ -1,0 +1,23 @@
+#!/bin/sh
+
+cd /home/vpelcak/\!files/preklad/kde/trunk/l10n-support
+
+posummit scripts/messages.summit cs scatter
+posummit scripts/docmessages.summit cs scatter
+
+#cd /home/vpelcak/\!files/preklad/kde/trunk/l10n-support
+#scripts/update_xml cs
+
+cd /home/vpelcak/\!files/preklad/kde/trunk/l10n-kde4
+scripts/update_xml cs
+
+cd /home/vpelcak/\!files/preklad/kde/branches/stable/l10n-kde4
+scripts/update_xml cs
+
+cd /home/vpelcak/\!files/preklad/kde/branches/stable/l10n-kde4/cs
+
+svn ci -m "Update from Summit"
+
+cd /home/vpelcak/\!files/preklad/kde/trunk/l10n-kde4/cs
+
+svn ci -m "Update from Summit"

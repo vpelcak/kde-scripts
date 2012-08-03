@@ -1,0 +1,9 @@
+#!/bin/bash
+
+KDESVN=/home/vpelcak/\!files/preklad/kde/trunk
+KDESVNLANG=cs
+mkdir -p $KDESVN/l10n-support/
+cd $KDESVN
+svn up
+cd $KDESVN/l10n-support/cs/summit
+$KDESVN/l10n-support/pology/scripts/posieve.py check-kde4 -s lokalize messages
