@@ -18,7 +18,7 @@ install: setpath
 	test -d $(DESTDIR)/$(prefix)/bin || mkdir -p $(DESTDIR)/$(prefix)/bin ; \
 	test -d $(DESTDIR)/$(prefix)/share/kde-l10n-scripts/ || mkdir -p $(DESTDIR)/$(prefix)/share/kde-l10n-scripts/ ; \
 	for script in $(SCRIPTS); do \
-		install -m 0755 $$script $(DESTDIR)/$(prefix)/bin ; \
+		install -m 0755 $${script/.in} $(DESTDIR)/$(prefix)/bin ; \
 	done ; \
 	install -m 0644 common.sh $(DESTDIR)/$(prefix)/share/kde-l10n-scripts/
 
