@@ -1,9 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-KDESVN=/home/vpelcak/\!files/preklad/kde/trunk
-KDESVNLANG=cs
-mkdir -p $KDESVN/l10n-support/
-cd $KDESVN
-svn up
-cd $KDESVN/l10n-support/cs/summit
-$KDESVN/l10n-support/pology/scripts/posieve.py check-kde4 -s lokalize messages
+. /usr/share/kdel10n-scripts/common.sh
+
+pushd "${KDEREPO_PATH}/trunk" > /dev/null || exit 1
+
+echo "Updating repositories at \"${KDEREPO_PATH}/trunk\""
+svn up || exit 1
+
+popd > /dev/null
+
+pushd "${KDEREPO_PATH}/trunk/l10n-support/cs/summit" > /dev/null || exit 1
+
+echo "Checking semantic of kde4 translations"
+${POSIEVE} find-messages -s check-kde4 -s lokalize messages > /dev/null
+
+popd > /dev/null

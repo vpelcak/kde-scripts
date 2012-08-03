@@ -1,23 +1,33 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-cd /home/vpelcak/\!files/preklad/kde/trunk/l10n-support
+. /usr/share/kdel10n-scripts/common.sh
 
-posummit scripts/messages.summit cs scatter
-posummit scripts/docmessages.summit cs scatter
+pushd "${KDE_REPO}"/trunk/l10n-support > /dev/null || exit 1
 
-#cd /home/vpelcak/\!files/preklad/kde/trunk/l10n-support
-#scripts/update_xml cs
+echo "Merging all data from summit repository"
+posummit scripts/messages.summit cs scatter || exit 1
+posummit scripts/docmessages.summit cs scatter || exit 1
 
-cd /home/vpelcak/\!files/preklad/kde/trunk/l10n-kde4
-scripts/update_xml cs
+popd > /dev/null || exit 1
 
-cd /home/vpelcak/\!files/preklad/kde/branches/stable/l10n-kde4
-scripts/update_xml cs
+pushd "${KDE_REPO}"/trunk/l10n-kde4 > /dev/null || exit 1
+scripts/update_xml cs || exit 1
+popd > /dev/null || exit 1
 
-cd /home/vpelcak/\!files/preklad/kde/branches/stable/l10n-kde4/cs
+pushd "${KDE_REPO}"/branches/stable/l10n-kde4 > /dev/null || exit 1
+scripts/update_xml cs || exit 1
+popd > /dev/null || exit 
 
-svn ci -m "Update from Summit"
+pushd "${KDE_REPO}"/branches/stable/l10n-kde4/cs > /dev/null || exit 1
 
-cd /home/vpelcak/\!files/preklad/kde/trunk/l10n-kde4/cs
+echo "Commiting in all the changes on stable repository"
+svn ci -m "Update from Summit" || exit 1
 
-svn ci -m "Update from Summit"
+popd > /dev/null || exit 1
+
+pushd "${KDE_REPO}"/trunk/l10n-kde4/cs > /dev/null || exit 1
+
+echo "Commiting in all the changes on trunk repository"
+svn ci -m "Update from Summit" || exit 1
+
+popd > /dev/null || exit 1

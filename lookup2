@@ -1,9 +1,22 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-KDESVN=/home/vpelcak/\!files/preklad/kde/trunk
-KDESVNLANG=cs
-mkdir -p $KDESVN/l10n-support/
-cd $KDESVN
-svn up
-cd $KDESVN/l10n-support/cs/summit
-$KDESVN/l10n-support/pology/scripts/posieve.py find-messages -s msgid:${1} -s msgstr:${2} -s lokalize messages > /dev/null
+if [[ -z ${1} || -z ${2} ]]; then
+	echo "usage: $0 str1 str2"
+	exit 1
+fi
+
+. /usr/share/kdel10n-scripts/common.sh
+
+pushd "${KDEREPO_PATH}/trunk" > /dev/null || exit 1
+
+echo "Updating repositories at \"${KDEREPO_PATH}/trunk\""
+svn up || exit 1
+
+popd > /dev/null
+
+pushd "${KDEREPO_PATH}/trunk/l10n-support/cs/summit" > /dev/null || exit 1
+
+echo "Seaching for string \"msgid:${1}\" with \"msgstr:${2}\""
+${POSIEVE} find-messages -s "msgid:${1}" -s "msgstr:${2}" -s lokalize messages > /dev/null
+
+popd > /dev/null
