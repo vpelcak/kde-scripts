@@ -26,12 +26,12 @@ create_initial_repo() {
 
 	echo "Creating the repository structure at \"${KDEREPO_PATH}\""
 
-	svn co --depth=empty svn+ssh://svn.kde.org/home/kde .
-	svn up --depth=empty branches branches/stable branches/stable/l10n-kde4
-	svn up --depth=empty trunk trunk/l10n-support trunk/l10n-kde4
-	svn up branches/stable/l10n-kde4/{scripts,templates,${KDE_LANG}
-	svn up trunk/l10n-kde4/{scripts,templates,${KDE_LANG}}
-	svn up trunk/l10n-support/{pology,scripts,templates,${KDE_LANG}}
+	svn co --depth=empty svn://anonsvn.kde.org/home/kde . || exit 1
+	svn up --depth=empty branches branches/stable branches/stable/l10n-kde4 || exit 1
+	svn up --depth=empty trunk trunk/l10n-support trunk/l10n-kde4 || exit 1
+	svn up branches/stable/l10n-kde4/{scripts,templates,${KDE_LANG} || exit 1
+	svn up trunk/l10n-kde4/{scripts,templates,${KDE_LANG}} || exit 1
+	svn up trunk/l10n-support/{pology,scripts,templates,${KDE_LANG}} || exit 1
 
 	popd > /dev/null
 }
