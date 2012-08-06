@@ -1,10 +1,10 @@
 SCRIPTS = \
-	lookup.in \
-	lookup2.in \
-	obsol.in \
-	pology.in \
 	pomerge.in \
-	poscatter.in
+	poscatter.in \
+	string-kde4-checkup.in \
+	string-lookup.in \
+	string-lookup-2.in \
+	string-obsolete.in
 
 prefix ?= /usr/local
 
