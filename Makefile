@@ -4,7 +4,9 @@ SCRIPTS = \
 	string-kde4-checkup.in \
 	string-lookup.in \
 	string-lookup-2.in \
-	string-obsolete.in
+	string-obsolete.in \
+	string-pack.in \
+	string-update.in
 
 prefix ?= /usr/local
 

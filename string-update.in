@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+. _PREFIX_/share/kde-l10n-scripts/common.sh
+
+# Do nothing else, update is done by common.sh already.
+# We just need this binary to be able to update without any other action run.

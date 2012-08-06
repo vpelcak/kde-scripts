@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+. _PREFIX_/share/kde-l10n-scripts/common.sh
+
+pushd "${KDEREPO_PATH}/trunk/l10n-support/${KDE_LANG}/summit" > /dev/null || exit 1
+
+echo "Creating tarball for strings changed by you"
+tar cJvf "${KDEREPO_PATH}/${KDE_LANG}-kde-l10n-updates.tar.xz" $(svn status |grep '[AM]' |awk '{print $2}')
+
+echo "Tarball created:"
+echo "    \"${KDEREPO_PATH}/${KDE_LANG}-kde-l10n-updates.tar.xz\""
+
+popd > /dev/null
