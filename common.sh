@@ -43,7 +43,7 @@ TargetLangCode=${KDE_LANG}
 EOF
 
 	# create the lokalize file for summit documentation
-	cat <<-EOF > documentation.summit
+	cat <<-EOF > documentation-summit.lokalize
 [General]
 AltDir=./trunk/l10n-support/${KDE_LANG}/summit/docmessages
 BranchDir=./trunk/l10n-support/${KDE_LANG}/summit/docmessages
