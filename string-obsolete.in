@@ -2,13 +2,6 @@
 
 . _PREFIX_/share/kde-l10n-scripts/common.sh
 
-pushd "${KDEREPO_PATH}/trunk" > /dev/null || exit 1
-
-echo "Updating repositories at \"${KDEREPO_PATH}/trunk\""
-svn up || exit 1
-
-popd > /dev/null
-
 pushd "${KDEREPO_PATH}/trunk/l10n-support/${KDE_LANG}/summit" > /dev/null || exit 1
 
 echo "Seaching for obsolete strings"

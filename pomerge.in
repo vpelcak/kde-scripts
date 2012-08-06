@@ -2,9 +2,6 @@
 
 . _PREFIX_/share/kde-l10n-scripts/common.sh
 
-echo "Updating all repositories"
-svn up "${KDE_REPO}"/{trunk,branches/stable}/l10n-kde4/{scripts,templates,${KDE_LANG}} "${KDEREPO}"/trunk/l10n-support/{pology,scripts,templates,${KDE_LANG}} || exit 1
-
 pushd "${KDE_REPO}"/trunk/l10n-support > /dev/null || exit 1
 
 echo "Merging all data to summit repository"
