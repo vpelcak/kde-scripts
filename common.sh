@@ -21,6 +21,19 @@ check_config() {
 	fi
 }
 
+create_initial_repo() {
+	pushd ${KDEREPO_PATH} > /dev/null || exit 1
+
+	svn co --depth=empty svn+ssh://svn.kde.org/home/kde .
+	svn up --depth=empty branches branches/stable branches/stable/l10n-kde4
+	svn up --depth=empty trunk trunk/l10n-support trunk/l10n-kde4
+	svn up branches/stable/l10n-kde4/{scripts,templates,${KDE_LANG}
+	svn up trunk/l10n-kde4/{scripts,templates,${KDE_LANG}}
+	svn up trunk/l10n-support/{pology,scripts,templates,${KDE_LANG}}
+
+	popd > /dev/null
+}
+
 
 # Check where we put the config file
 [[ -z ${XDG_CONFIG_HOME} ]] && XDG_CONF="${HOME}/.config/" || XDG_CONF="${XDG_CONFIG_HOME}"
@@ -47,4 +60,5 @@ fi
 . "${XDG_CONF}/kde-l10n-scripts.conf"
 check_config
 
-# TODO: do initial checkout if the KDEREPO_PATH is empty to ease deployment
+# create initial repo if the KDEREPO_PATH is empty
+[ "$(ls -A ${KDEREPO_PATH})" ] || create_initial_repo
