@@ -29,6 +29,15 @@ create_initial_repo() {
 	svn co --depth=empty svn://anonsvn.kde.org/home/kde . || exit 1
 	svn up --depth=empty branches branches/stable branches/stable/l10n-kde4 || exit 1
 	svn up --depth=empty trunk trunk/l10n-support trunk/l10n-kde4 || exit 1
+
+	popd > /dev/null
+}
+
+update_repos() {
+	pushd ${KDEREPO_PATH} > /dev/null || exit 1
+
+	echo "Updating the repositories to latest versions"
+
 	svn up branches/stable/l10n-kde4/{scripts,templates,${KDE_LANG} || exit 1
 	svn up trunk/l10n-kde4/{scripts,templates,${KDE_LANG}} || exit 1
 	svn up trunk/l10n-support/{pology,scripts,templates,${KDE_LANG}} || exit 1
@@ -64,3 +73,5 @@ check_config
 
 # create initial repo if the KDEREPO_PATH is empty
 [ "$(ls -A ${KDEREPO_PATH})" ] || create_initial_repo
+
+update_repos
