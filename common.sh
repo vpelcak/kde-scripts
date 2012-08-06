@@ -24,6 +24,8 @@ check_config() {
 create_initial_repo() {
 	pushd ${KDEREPO_PATH} > /dev/null || exit 1
 
+	echo "Creating the repository structure at \"${KDEREPO_PATH}\""
+
 	svn co --depth=empty svn+ssh://svn.kde.org/home/kde .
 	svn up --depth=empty branches branches/stable branches/stable/l10n-kde4
 	svn up --depth=empty trunk trunk/l10n-support trunk/l10n-kde4
