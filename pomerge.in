@@ -3,17 +3,13 @@
 . _PREFIX_/share/kde-l10n-scripts/common.sh
 
 echo "Updating all repositories"
-svn up "${KDE_REPO}"/{trunk,branches/stable}/l10n-kde4/{scripts,templates,cs} "${KDEREPO}"/trunk/l10n-support/{pology,scripts,templates,cs} || exit 1
-#cd $KDEREPO
-#svn info
-#svn switch --relocate https://svn.kde.org/home/kde svn+ssh://pelcak@svn.kde.org/home/kde/
+svn up "${KDE_REPO}"/{trunk,branches/stable}/l10n-kde4/{scripts,templates,${KDE_LANG}} "${KDEREPO}"/trunk/l10n-support/{pology,scripts,templates,${KDE_LANG}} || exit 1
 
 pushd "${KDE_REPO}"/trunk/l10n-support > /dev/null || exit 1
 
 echo "Merging all data to summit repository"
-posummit scripts/messages.summit cs merge || exit 1
-posummit scripts/docmessages.summit cs merge || exit 1
-#posieve set-header -sfield:'Plural-Forms:nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;' -screate -safter:'Content-Transfer-Encoding' /home/vpelcak/\!files/preklad/kde/trunk/l10n-support/cs/messages/
+posummit scripts/messages.summit ${KDE_LANG} merge || exit 1
+posummit scripts/docmessages.summit ${KDE_LANG} merge || exit 1
 
 echo "Commiting in all the changes"
 svn ci -m "Update of Summit" || exit 1

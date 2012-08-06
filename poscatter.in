@@ -18,14 +18,14 @@ pushd "${KDE_REPO}"/branches/stable/l10n-kde4 > /dev/null || exit 1
 scripts/update_xml cs || exit 1
 popd > /dev/null || exit 
 
-pushd "${KDE_REPO}"/branches/stable/l10n-kde4/cs > /dev/null || exit 1
+pushd "${KDE_REPO}"/branches/stable/l10n-kde4/${KDE_LANG} > /dev/null || exit 1
 
 echo "Commiting in all the changes on stable repository"
 svn ci -m "Update from Summit" || exit 1
 
 popd > /dev/null || exit 1
 
-pushd "${KDE_REPO}"/trunk/l10n-kde4/cs > /dev/null || exit 1
+pushd "${KDE_REPO}"/trunk/l10n-kde4/${KDE_LANG} > /dev/null || exit 1
 
 echo "Commiting in all the changes on trunk repository"
 svn ci -m "Update from Summit" || exit 1

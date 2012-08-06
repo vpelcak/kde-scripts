@@ -9,7 +9,7 @@ svn up || exit 1
 
 popd > /dev/null
 
-pushd "${KDEREPO_PATH}/trunk/l10n-support/cs/summit" > /dev/null || exit 1
+pushd "${KDEREPO_PATH}/trunk/l10n-support/${KDE_LANG}/summit" > /dev/null || exit 1
 
 echo "Checking semantic of kde4 translations"
 ${POSIEVE} find-messages -s check-kde4 -s lokalize messages > /dev/null

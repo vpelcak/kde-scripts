@@ -14,7 +14,7 @@ svn up || exit 1
 
 popd > /dev/null
 
-pushd "${KDEREPO_PATH}/trunk/l10n-support/cs/summit" > /dev/null || exit 1
+pushd "${KDEREPO_PATH}/trunk/l10n-support/${KDE_LANG}/summit" > /dev/null || exit 1
 
 echo "Seaching for string \"msgid:${1}\" with \"msgstr:${2}\""
 ${POSIEVE} find-messages -s "msgid:${1}" -s "msgstr:${2}" -s lokalize messages > /dev/null
