@@ -30,6 +30,30 @@ create_initial_repo() {
 	svn up --depth=empty branches branches/stable branches/stable/l10n-kde4 || exit 1
 	svn up --depth=empty trunk trunk/l10n-support trunk/l10n-kde4 || exit 1
 
+	# create the lokalize file for summit
+	cat <<-EOF > summit.lokalize
+[General]
+AltDir=./trunk/l10n-support/${KDE_LANG}/summit/messages
+BranchDir=./trunk/l10n-support/${KDE_LANG}/summit/messages
+LangCode=${KDE_LANG}
+PoBaseDir=./trunk/l10n-support/${KDE_LANG}/summit/messages
+PotBaseDir=./trunk/l10n-support/templates/summit/messages
+ProjectID=kde-messages
+TargetLangCode=${KDE_LANG}
+EOF
+
+	# create the lokalize file for summit documentation
+	cat <<-EOF > documentation.summit
+[General]
+AltDir=./trunk/l10n-support/${KDE_LANG}/summit/docmessages
+BranchDir=./trunk/l10n-support/${KDE_LANG}/summit/docmessages
+LangCode=${KDE_LANG}
+PoBaseDir=./trunk/l10n-support/${KDE_LANG}/summit/docmessages
+PotBaseDir=./trunk/l10n-support/templates/summit/docmessages
+ProjectID=kde-docmessages
+TargetLangCode=${KDE_LANG}
+EOF
+
 	popd > /dev/null
 }
 
