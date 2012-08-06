@@ -2,7 +2,7 @@
 
 . _PREFIX_/share/kde-l10n-scripts/common.sh
 
-pushd "${KDE_REPO}"/trunk/l10n-support > /dev/null || exit 1
+pushd "${KDEREPO_PATH}"/trunk/l10n-support > /dev/null || exit 1
 
 echo "Merging all data to summit repository"
 posummit scripts/messages.summit ${KDE_LANG} merge || exit 1
