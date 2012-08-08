@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+
+# Firstly this script must be ALWAYS run after pomerge, so run it here
+`which kde-pomerge`
+
 . _PREFIX_/share/kde-l10n-scripts/common.sh
 
 pushd "${KDEREPO_PATH}"/trunk/l10n-support > /dev/null || exit 1
