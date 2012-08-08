@@ -62,7 +62,7 @@ update_repos() {
 
 	echo "Updating the repositories to latest versions"
 
-	svn up branches/stable/l10n-kde4/{scripts,templates,${KDE_LANG} || exit 1
+	svn up branches/stable/l10n-kde4/{scripts,templates,${KDE_LANG}} || exit 1
 	svn up trunk/l10n-kde4/{scripts,templates,${KDE_LANG}} || exit 1
 	svn up trunk/l10n-support/{pology,scripts,templates,${KDE_LANG}} || exit 1
 

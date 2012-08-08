@@ -11,12 +11,12 @@ posummit scripts/docmessages.summit cs scatter || exit 1
 popd > /dev/null || exit 1
 
 pushd "${KDEREPO_PATH}"/trunk/l10n-kde4 > /dev/null || exit 1
-scripts/update_xml cs || exit 1
+./scripts/update_xml cs || exit 1
 popd > /dev/null || exit 1
 
 pushd "${KDEREPO_PATH}"/branches/stable/l10n-kde4 > /dev/null || exit 1
-scripts/update_xml cs || exit 1
-popd > /dev/null || exit 
+./scripts/update_xml cs || exit 1
+popd > /dev/null || exit 1
 
 pushd "${KDEREPO_PATH}"/branches/stable/l10n-kde4/${KDE_LANG} > /dev/null || exit 1
 
