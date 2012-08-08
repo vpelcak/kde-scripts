@@ -1,6 +1,6 @@
 SCRIPTS = \
-	pomerge.in \
-	poscatter.in \
+	kde-pomerge.in \
+	kde-poscatter.in \
 	string-kde4-checkup.in \
 	string-lookup.in \
 	string-lookup-2.in \
