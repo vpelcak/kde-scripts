@@ -2,10 +2,11 @@ SCRIPTS = \
 	kde-pomerge.in \
 	kde-poscatter.in \
 	string-kde4-checkup.in \
-	string-lookup.in \
-	string-lookup-2.in \
 	string-obsolete.in \
 	string-pack.in \
+	string-search-both.in \
+	string-search-orginal.in \
+	string-search-translated.in \
 	string-update.in
 
 prefix ?= /usr/local
