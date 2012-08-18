@@ -1,0 +1,6 @@
+Our lovely todolist
+===================
+
+1) Find a way how to search for running lokalize over dbus and launch it if it is not running. So pology can open anything.
+
+2) Write script that puts the compiled translations to /usr, but only those that are already in usr not to mess with package managers that track actual files installed there.
