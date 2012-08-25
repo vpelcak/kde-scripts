@@ -30,6 +30,9 @@ find ./ -name \*.po |xargs -i msgattrib {}  --no-fuzzy -o {}
 echo "Removing obsolete string from stable"
 find ./ -name \*.po |xargs -i msgattrib {}  --no-obsolete -o {}
 
+echo "Updating files from pot files to compensate removed fuzzy lines"
+find ./ -name \*.po | xargs -i msgmerge -NU {} ../templates/{}t
+
 echo "Commiting in all the changes on stable repository"
 svn ci -m "Update from Summit" || exit 1
 
