@@ -24,12 +24,18 @@ popd > /dev/null || exit 1
 
 pushd "${KDEREPO_PATH}"/branches/stable/l10n-kde4/${KDE_LANG} > /dev/null || exit 1
 
+echo "Removing fuzzy string from trunk"
+find ./ -name \*.po |xargs -i msgattrib {}  --no-fuzzy -o {}
+
 echo "Commiting in all the changes on stable repository"
 svn ci -m "Update from Summit" || exit 1
 
 popd > /dev/null || exit 1
 
 pushd "${KDEREPO_PATH}"/trunk/l10n-kde4/${KDE_LANG} > /dev/null || exit 1
+
+echo "Removing fuzzy string from stable"
+find ./ -name \*.po |xargs -i msgattrib {}  --no-fuzzy -o {}
 
 echo "Commiting in all the changes on trunk repository"
 svn ci -m "Update from Summit" || exit 1
