@@ -8,6 +8,9 @@ echo "Merging all data to summit repository"
 posummit scripts/messages.summit ${KDE_LANG} merge || exit 1
 posummit scripts/docmessages.summit ${KDE_LANG} merge || exit 1
 
+echo "Removing obsolete string from summit"
+find ./ -name \*.po |xargs -i msgattrib {}  --no-obsolete -o {}
+
 echo "Commiting in all the changes"
 svn ci -m "Update of Summit" || exit 1
 
