@@ -24,8 +24,11 @@ popd > /dev/null || exit 1
 
 pushd "${KDEREPO_PATH}"/branches/stable/l10n-kde4/${KDE_LANG} > /dev/null || exit 1
 
-echo "Removing fuzzy string from trunk"
+echo "Removing fuzzy string from stable"
 find ./ -name \*.po |xargs -i msgattrib {}  --no-fuzzy -o {}
+
+echo "Removing obsolete string from stable"
+find ./ -name \*.po |xargs -i msgattrib {}  --no-obsolete -o {}
 
 echo "Commiting in all the changes on stable repository"
 svn ci -m "Update from Summit" || exit 1
@@ -34,8 +37,14 @@ popd > /dev/null || exit 1
 
 pushd "${KDEREPO_PATH}"/trunk/l10n-kde4/${KDE_LANG} > /dev/null || exit 1
 
-echo "Removing fuzzy string from stable"
+echo "Removing fuzzy string from trunk"
 find ./ -name \*.po |xargs -i msgattrib {}  --no-fuzzy -o {}
+
+echo "Removing obsolete string from trunk"
+find ./ -name \*.po |xargs -i msgattrib {}  --no-obsolete -o {}
+
+echo "Updating files from pot files to compensate removed fuzzy lines"
+find ./ -name \*.po | xargs -i msgmerge -NU {} ../templates/{}t
 
 echo "Commiting in all the changes on trunk repository"
 svn ci -m "Update from Summit" || exit 1
