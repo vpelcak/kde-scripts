@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 check_config() {
 	# path to translations
 	if [[ ! -d ${KDEREPO_PATH} ]]; then
