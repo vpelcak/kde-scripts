@@ -38,7 +38,7 @@ create_initial_repo() {
 		svn co --depth=empty svn://anonsvn.kde.org/home/kde . || exit 1
 	fi
 
-	for repo in ${REPODIR[@]}; do
+	for repo in ${REPODIRS[@]}; do
 		if [[ ! -d "${repo}" ]]; then
 			svn co --depth-empty ${repo} || exit 1
 		fi
