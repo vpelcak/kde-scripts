@@ -22,11 +22,27 @@ check_config() {
 create_initial_repo() {
 	pushd ${KDEREPO_PATH} > /dev/null || exit 1
 
-	echo "Creating the repository structure at \"${KDEREPO_PATH}\""
+	REPODIRS=(
+		"branches"
+		"branches/stable"
+		"branches/stable/l10n-kde4"
+		"trunk"
+		"trunk/l10n-support"
+		"trunk/l10n-kde4"
+		"trunk/l10n-kf5"
+	)
 
-	svn co --depth=empty svn://anonsvn.kde.org/home/kde . || exit 1
-	svn up --depth=empty branches branches/stable branches/stable/l10n-kde4 || exit 1
-	svn up --depth=empty trunk trunk/l10n-support trunk/l10n-kde4 trunk/l10n-kf5 || exit 1
+	echo "Validating the repository structure at \"${KDEREPO_PATH}\""
+
+	if [[ ! -d .svn ]]; then
+		svn co --depth=empty svn://anonsvn.kde.org/home/kde . || exit 1
+	fi
+
+	for repo in ${REPODIR[@]}; do
+		if [[ ! -d "${repo}" ]]; then
+			svn co --depth-empty ${repo} || exit 1
+		fi
+	done
 
 	# create the lokalize file for summit
 	cat <<-EOF > summit.lokalize
@@ -94,7 +110,6 @@ fi
 . "${XDG_CONF}/kde-l10n-scripts.conf"
 check_config
 
-# create initial repo if the KDEREPO_PATH is empty
-[ "$(ls -A ${KDEREPO_PATH})" ] || create_initial_repo
+create_initial_repo
 
 update_repos
