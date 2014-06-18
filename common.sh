@@ -40,7 +40,7 @@ create_initial_repo() {
 
 	for repo in ${REPODIRS[@]}; do
 		if [[ ! -d "${repo}" ]]; then
-			svn co --depth=empty ${repo} || exit 1
+			svn up --depth=empty ${repo} || exit 1
 		fi
 	done
 
