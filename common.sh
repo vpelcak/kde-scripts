@@ -106,6 +106,9 @@ EOF
 
 	echo "Please set up required variables in:"
 	echo "    \"${XDG_CONF}/kde-l10n-scripts.conf\""
+	echo "For migration to writable setup remember to enter the KDEREPO_PATH folder"
+	echo "and move the svn checkout to svn+ssh base:"
+	echo "    svn relocate svn+ssh://svn@svn.kde.org/home/kde"
 	exit 0
 fi
 
