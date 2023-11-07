@@ -25,12 +25,12 @@ create_initial_repo() {
 	REPODIRS=(
 		"branches"
 		"branches/stable"
-		"branches/stable/l10n-kde4"
 		"branches/stable/l10n-kf5"
 		"trunk"
 		"trunk/l10n-support"
-		"trunk/l10n-kde4"
 		"trunk/l10n-kf5"
+                "trunk/l10n-kf6"
+
 	)
 
 	echo "Validating the repository structure at \"${KDEREPO_PATH}\""
@@ -77,11 +77,10 @@ update_repos() {
 
 	echo "Updating the repositories to latest versions"
 
-	svn up branches/stable/l10n-kde4/{scripts,templates,${KDE_LANG}} || exit 1
-	svn up trunk/l10n-kde4/{scripts,templates,${KDE_LANG}} || exit 1
 	svn up branches/stable/l10n-kf5/{scripts,templates,${KDE_LANG}} || exit 1
 	svn up trunk/l10n-support/{pology,scripts,templates,${KDE_LANG}} || exit 1
 	svn up trunk/l10n-kf5/{scripts,templates,${KDE_LANG}} || exit 1
+        svn up trunk/l10n-kf6/{scripts,templates,${KDE_LANG}} || exit 1
 
 	popd > /dev/null
 }
