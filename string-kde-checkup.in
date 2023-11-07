@@ -4,7 +4,7 @@
 
 pushd "${KDEREPO_PATH}/trunk/l10n-support/${KDE_LANG}/summit" > /dev/null || exit 1
 
-echo "Checking semantic of kde4 translations"
+echo "Checking semantic of kde translations"
 ${POSIEVE} check-kde4 -s lokalize messages > /dev/null
 
 popd > /dev/null
