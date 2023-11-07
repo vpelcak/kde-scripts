@@ -4,10 +4,9 @@
 `which kde-pomerge`
 
 SCATTERING_DIRS=(
-    "trunk/l10n-kde4"
     "trunk/l10n-kf5"
-    "branches/stable/l10n-kde4"
     "branches/stable/l10n-kf5"
+    "trunk/l10n-kf6"
 )
 
 
