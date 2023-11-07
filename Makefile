@@ -1,7 +1,7 @@
 SCRIPTS = \
 	kde-pomerge.in \
 	kde-poscatter.in \
-	string-kde4-checkup.in \
+	string-kde-checkup.in \
 	string-obsolete.in \
 	string-pack.in \
 	string-search-both.in \
