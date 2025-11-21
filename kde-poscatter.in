@@ -5,8 +5,9 @@
 
 SCATTERING_DIRS=(
     "trunk/l10n-kf5"
-    "branches/stable/l10n-kf5"
     "trunk/l10n-kf6"
+    "branches/stable/l10n-kf5"
+    "branches/stable/l10n-kf6"
 )
 
 
