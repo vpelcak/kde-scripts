@@ -26,8 +26,8 @@ create_initial_repo() {
 		"branches"
 		"branches/stable"
 		"branches/stable/l10n-kf5"
+		"branches/stable/l10n-kf6"
 		"trunk"
-		"l10n-templates"
 		"trunk/l10n-kf5"
         "trunk/l10n-kf6"
 
@@ -37,6 +37,10 @@ create_initial_repo() {
 
 	if [[ ! -d .svn ]]; then
 		svn co --depth=empty svn://anonsvn.kde.org/home/kde . || exit 1
+	fi
+
+	if [[ ! -d l10n-templates ]]; then
+		git clone https://invent.kde.org/localization/l10n-templates.git || exit 1
 	fi
 
 	for repo in ${REPODIRS[@]}; do
