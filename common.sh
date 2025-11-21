@@ -46,7 +46,7 @@ create_initial_repo() {
 	done
 
 	# create the lokalize file for summit
-	        cat <<-EOF > summit.lokalize
+	cat <<-EOF > summit.lokalize
 [General]
 AltDir=./trunk/l10n-support/${KDE_LANG}/summit/messages
 BranchDir=./trunk/l10n-support/${KDE_LANG}/summit/messages
@@ -57,8 +57,8 @@ ProjectID=kde-messages
 TargetLangCode=${KDE_LANG}
 EOF
 
-        # create the lokalize file for summit documentation
-        cat <<-EOF > documentation-summit.lokalize
+    # create the lokalize file for summit documentation
+    cat <<-EOF > documentation-summit.lokalize
 [General]
 AltDir=./trunk/l10n-support/${KDE_LANG}/summit/docmessages
 BranchDir=./trunk/l10n-support/${KDE_LANG}/summit/docmessages
@@ -69,26 +69,26 @@ ProjectID=kde-docmessages
 TargetLangCode=${KDE_LANG}
 EOF
 
-        popd > /dev/null
+    popd > /dev/null
 }
 
 update_repos() {
-        pushd ${KDEREPO_PATH} > /dev/null || exit 1
+    pushd ${KDEREPO_PATH} > /dev/null || exit 1
 
-        echo "Updating the repositories to latest versions"
+    echo "Updating the repositories to latest versions"
 
-        svn up branches/stable/l10n-kf5/{scripts,${KDE_LANG}} || exit 1
-        svn up trunk/l10n-support/{pology,scripts,${KDE_LANG}} || exit 1
-        svn up trunk/l10n-kf5/{scripts,${KDE_LANG}} || exit 1
-        svn up trunk/l10n-kf6/{scripts,${KDE_LANG}} || exit 1
+    svn up branches/stable/l10n-kf5/{scripts,${KDE_LANG}} || exit 1
+    svn up trunk/l10n-support/{pology,scripts,${KDE_LANG}} || exit 1
+    svn up trunk/l10n-kf5/{scripts,${KDE_LANG}} || exit 1
+    svn up trunk/l10n-kf6/{scripts,${KDE_LANG}} || exit 1
 
-        popd > /dev/null
+    popd > /dev/null
 
-        pushd ${KDEREPO_PATH}/l10n-templates > /dev/null || exit 1
+    pushd ${KDEREPO_PATH}/l10n-templates > /dev/null || exit 1
 
-        git pull
+    git pull
 
-        popd > /dev/null
+	popd > /dev/null
 }
 
 # Check where we put the config file
