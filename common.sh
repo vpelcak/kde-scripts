@@ -27,9 +27,9 @@ create_initial_repo() {
 		"branches/stable"
 		"branches/stable/l10n-kf5"
 		"trunk"
-		"trunk/l10n-support"
+		"l10n-templates"
 		"trunk/l10n-kf5"
-                "trunk/l10n-kf6"
+        "trunk/l10n-kf6"
 
 	)
 
@@ -46,45 +46,50 @@ create_initial_repo() {
 	done
 
 	# create the lokalize file for summit
-	cat <<-EOF > summit.lokalize
+	        cat <<-EOF > summit.lokalize
 [General]
 AltDir=./trunk/l10n-support/${KDE_LANG}/summit/messages
 BranchDir=./trunk/l10n-support/${KDE_LANG}/summit/messages
 LangCode=${KDE_LANG}
 PoBaseDir=./trunk/l10n-support/${KDE_LANG}/summit/messages
-PotBaseDir=./trunk/l10n-support/templates/summit/messages
+PotBaseDir=./l10n-templates/summit/messages
 ProjectID=kde-messages
 TargetLangCode=${KDE_LANG}
 EOF
 
-	# create the lokalize file for summit documentation
-	cat <<-EOF > documentation-summit.lokalize
+        # create the lokalize file for summit documentation
+        cat <<-EOF > documentation-summit.lokalize
 [General]
 AltDir=./trunk/l10n-support/${KDE_LANG}/summit/docmessages
 BranchDir=./trunk/l10n-support/${KDE_LANG}/summit/docmessages
 LangCode=${KDE_LANG}
 PoBaseDir=./trunk/l10n-support/${KDE_LANG}/summit/docmessages
-PotBaseDir=./trunk/l10n-support/templates/summit/docmessages
+PotBaseDir=./l10n-templates/summit/docmessages
 ProjectID=kde-docmessages
 TargetLangCode=${KDE_LANG}
 EOF
 
-	popd > /dev/null
+        popd > /dev/null
 }
 
 update_repos() {
-	pushd ${KDEREPO_PATH} > /dev/null || exit 1
+        pushd ${KDEREPO_PATH} > /dev/null || exit 1
 
-	echo "Updating the repositories to latest versions"
+        echo "Updating the repositories to latest versions"
 
-	svn up branches/stable/l10n-kf5/{scripts,templates,${KDE_LANG}} || exit 1
-	svn up trunk/l10n-support/{pology,scripts,templates,${KDE_LANG}} || exit 1
-	svn up trunk/l10n-kf5/{scripts,templates,${KDE_LANG}} || exit 1
-        svn up trunk/l10n-kf6/{scripts,templates,${KDE_LANG}} || exit 1
+        svn up branches/stable/l10n-kf5/{scripts,${KDE_LANG}} || exit 1
+        svn up trunk/l10n-support/{pology,scripts,${KDE_LANG}} || exit 1
+        svn up trunk/l10n-kf5/{scripts,${KDE_LANG}} || exit 1
+        svn up trunk/l10n-kf6/{scripts,${KDE_LANG}} || exit 1
 
-	popd > /dev/null
+        popd > /dev/null
+
+        pushd ${KDEREPO_PATH}/l10n-templates > /dev/null || exit 1
+
+        git pull
+
+        popd > /dev/null
 }
-
 
 # Check where we put the config file
 [[ -z ${XDG_CONFIG_HOME} ]] && XDG_CONF="${HOME}/.config/" || XDG_CONF="${XDG_CONFIG_HOME}"
